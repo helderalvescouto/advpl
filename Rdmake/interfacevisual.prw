@@ -1,5 +1,5 @@
-#include "Rwmake.ch"
 #include "totvs.ch"
+//#include "Rwmake.ch"
 
 //------------------------------------------------------------------------------------------
 /*/{Protheus.doc} IVisual
