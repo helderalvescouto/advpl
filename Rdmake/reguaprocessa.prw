@@ -1,7 +1,7 @@
-#include "totvs.ch"
+#include "Protheus.ch"
 
 //------------------------------------------------------------------------------------------
-/*/{Protheus.doc} PBRpt
+/*/{Protheus.doc} PBProc
 regua para relatorios
 
 @author    paulo.bindo
@@ -9,52 +9,49 @@ regua para relatorios
 @since     21/06/2019
 /*/
 
-User Function PBRpt()
+User Function PBProc()
 	Local aSay := {}
 	Local aButton := {}
 	Local nOpc := 0
-	Local cTitulo := "Exemplo de Funções"
-	Local cDesc1 := "Este programa exemplifica a utilização da função Processa() em conjunto"
-	Local cDesc2 := "com as funções de incremento ProcRegua() e IncProc()"
-
+	Local cTitulo := "Exemplo de FunÃ§Ãµes"
+	Local cDesc1 :="UtilizaÃ§Ã£o da funÃ§Ã£o Processa()"
+	Local cDesc2 := " em conjunto com as funÃ§Ãµes de incremento ProcRegua() e"
+	Local cDesc3 := " IncProc()"
+	
 
 	AADD( aSay, cDesc1 )
 	AADD( aSay, cDesc2 )
+    AADD( aSay, cDesc3 )	
 	AADD( aButton, { 1, .T., {|| nOpc := 1, FechaBatch() }} )
 	AADD( aButton, { 2, .T., {|| FechaBatch() }} )
 	FormBatch( cTitulo, aSay, aButton )
 	If nOpc <> 1
-		Return
+		Return 
 	Endif
-	RptStatus({|lEnd|RunProc(@lEnd)}, "Aguarde...","Executando rotina.", .T. )
-Return
+	Processa( {|lEnd|RunProc(@lEnd)}, "Aguarde...","Executando rotina.", .T. )
+Return 
 
-
-//******************************************************************
+//************************************************
 /*/{Protheus.doc} RunProc
 /*/
 Static Function RunProc(lEnd)
 	Local nCnt := 0
-	Local cCancel := "Cancelado pelo usuario"
-
+    Local cCancel := "Cancelado pelo usuario"
 
 	dbSelectArea("SX5")
 	dbSetOrder(1)
 	dbSeek(xFilial("SX5")+"01",.T.)
-	While !Eof() .And. X5_FILIAL == xFilial("SX5") .And. X5_TABELA <= "99"
-		nCnt++
-		dbSkip()
-	End
-
-	SetRegua(nCnt)
+	dbEval( {|x| nCnt++ },,{||X5_FILIAL==xFilial("SX5").And.X5_TABELA<="99"})
+    
+    ProcRegua(nCnt)
 
 	dbSeek(xFilial("SX5")+"01",.T.)
 	While !Eof() .And. X5_FILIAL == xFilial("SX5") .And. X5_TABELA <= "99"
-		IncRegua()
+		IncProc("Processando tabela: "+SX5->X5_CHAVE)
 		If lEnd
 			MsgInfo(cCancel,"Fim")
 			Exit
 		Endif
 		dbSkip()
 	End
-Return
+Return 
