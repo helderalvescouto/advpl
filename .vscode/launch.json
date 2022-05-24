@@ -14,8 +14,50 @@
 	],
 	"lastPrograms": [
 		{
-			"label": "sigafat"
+			"args": [],
+			"label": "U_ABRE_SZ1"
+		},
+		{
+			"args": [],
+			"label": "U_ABSZ1"
+		},
+		{
+			"args": [],
+			"label": "U_AB2SZ1"
+		},
+		{
+			"args": [],
+			"label": "U_TESTE4"
+		},
+		{
+			"args": [],
+			"label": "U_TESTE6"
+		},
+		{
+			"args": [],
+			"label": "U_MANIPULACAO"
+		},
+		{
+			"args": [],
+			"label": "U_ControlNum"
+		},
+		{
+			"args": [],
+			"label": "U_PARAMETROS"
+		},
+		{
+			"args": [],
+			"label": "U_PARAM"
+		},
+		{
+			"args": [],
+			"label": "U_BGTRANS"
+		},
+		{
+			"args": [],
+			"label": "SIGAFAT"
 		}
 	],
-	"lastProgramExecuted": "sigafat"
+	"lastProgramExecuted": "SIGAFAT",
+	"lastProgramArgumens": []
 }
