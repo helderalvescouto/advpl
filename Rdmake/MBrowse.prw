@@ -78,6 +78,12 @@ User Function BInclui(cAlias,nReg,nOpc)
 	nOpcao := AxInclui(cAlias,nReg,nOpc)
 	If nOpcao == 1
 		MsgInfo("Inclusão efetuada com sucesso!")
+		DbSelectArea("SB1")
+		DbSetOrder(1)
+		dbSeek(xFilial()+SZ1->Z1_PRODUTO)
+		RecLock("SB1", .F.)
+			B1_DTALTER := Date()			
+		MsUnlock()
 	Else
 		MsgInfo("Inclusão cancelada!")
 	Endif

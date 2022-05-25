@@ -53,7 +53,7 @@ User Function VldAlt(cAlias,nReg,nOpc)
 	iF RetCodUsr() # "000000" .Or. INCLUI
 		nOpcao := AxAltera(cAlias,nReg,nOpc)
 	ELSE
-		msgstop("Usuario não autorizado","Atenção")
+		MsgInfo("Usuario não autorizado","Atenção")
 		lRet := .F.
 	eNDif
 
