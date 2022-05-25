@@ -8,7 +8,6 @@ Ponto de Entrada para correção sequencia numeração.
 /*/
 
 User Function CRIASXE()
-
 	Local cNum := NIL
 	Local aArea := getarea()
 	Local aArea2 := {}

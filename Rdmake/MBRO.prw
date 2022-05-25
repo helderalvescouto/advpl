@@ -4,9 +4,9 @@
 ÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜ
 ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 ±±ÉÍÍÍÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍËÍÍÍÍÍÍÑÍÍÍÍÍÍÍÍÍÍÍÍÍ»±±
-±±ºPrograma  ³MBrwSZ1    Autor ³ Paulo Bindo        º Data ³  26/10/21   º±±
+±±ºPrograma  ³MBrwSA3    Autor ³ Paulo Bindo        º Data ³  26/10/21   º±±
 ±±ÌÍÍÍÍÍÍÍÍÍÍØÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÏÍÍÍÍÍÍÍÍÍÍÍÍÍ¹±±
-±±ºDescricao ³ cadastro SZ1 COM MBRWOSE                                   º±±
+±±ºDescricao ³ cadastro SA3 COM MBRWOSE                                   º±±
 ±±º          ³                                                            º±±
 ±±ÌÍÍÍÍÍÍÍÍÍÍØÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹±±
 ±±ºUso       ³ AP6 IDE                                                    º±±
@@ -14,29 +14,32 @@
 ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 ßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßß
 /*/
-/*/{Protheus.doc} MBrwSZ1
+/*/{Protheus.doc} MBrwSA3
 /*/
-User Function MBrwSZ1()
-	Local cAlias := "SZ1"
+User Function MBrwSA3()
+	Local cAlias := "SA3"
 	Local aCores := {}
 	Local cFiltra := ""
 
-	Private cCadastro := "Cadastro de UM por Cliente"
+	Private cCadastro := "Cadastro de Vendedor"
 	Private aRotina := {}
-	Private aIndexZ1 := {}
+	Private aIndexA3 := {}
 	Private bFiltraBrw:={||}
 
 //BOTOES MENU
 	AADD(aRotina,{"Pesquisar" ,"PesqBrw" ,0,1})		//AADD(aRotina,{"Pesquisar" ,"AxPesqui",0,1})
 	AADD(aRotina,{"Visualizar","AxVisual" ,0,2})
-	AADD(aRotina,{"Incluir" ,"U_BInclui" ,0,3})		//AADD(aRotina,{"Incluir" ,"AxInclui",0,3})
-	AADD(aRotina,{"Alterar" ,"U_BAltera" ,0,4})  	//AADD(aRotina,{"Alterar" ,"AxAltera" ,0,4})
-	AADD(aRotina,{"Excluir" ,"U_BDeleta" ,0,5})		//AADD(aRotina,{"Excluir" ,"AxDeleta",0,5})
-	AADD(aRotina,{"Legenda" ,"U_BLegenda" ,0,3})
-	AADD(aRotina,{"Processa" ,"U_PBMsgRun()" ,0,6})
+	AADD(aRotina,{"Incluir" ,"U_BIncS3" ,0,3})		//AADD(aRotina,{"Incluir" ,"AxInclui",0,3})
+	AADD(aRotina,{"Alterar" ,"U_BAlterS3" ,0,4})  	//AADD(aRotina,{"Alterar" ,"AxAltera" ,0,4})
+	AADD(aRotina,{"Excluir" ,"U_BDelS3" ,0,5})		//AADD(aRotina,{"Excluir" ,"AxDeleta",0,5})
+	//AADD(aRotina,{"Legenda" ,"U_BLegS3" ,0,3})
+	if RetCodUsr() # "000000"
+        AADD(aRotina,{"Processa" ,"U_PBMsgRun()" ,0,6})
+    EndIf
 //CORES LEGENDA
-	AADD(aCores,{"Z1_TIPO == 'M'" ,"BR_VERDE" })
-	AADD(aCores,{"Z1_TIPO == 'D'" ,"BR_AMARELO" })
+	AADD(aCores,{"A3_TIPO == 'I'" ,"BR_VERDE" })
+	AADD(aCores,{"A3_TIPO == 'E'" ,"BR_AMARELO" })
+	AADD(aCores,{"A3_TIPO == 'P'" ,"BR_VERMELHO" })
 
 	dbSelectArea(cAlias)
 	dbSetOrder(1)
@@ -44,8 +47,8 @@ User Function MBrwSZ1()
 //| Cria o filtro na MBrowse utilizando a função FilBrowse
 //+------------------------------------------------------------
 
-	cFiltra	:= ' SZ1->Z1_FATOR > 0 '
-	bFiltraBrw 	:={ || FilBrowse(cAlias,@aIndexSZ1,@cFiltra) }
+	//cFiltra	:= ' SA3->A3_FATOR > 0 '
+	bFiltraBrw 	:={ || FilBrowse(cAlias,@aIndexA3,@cFiltra) }
 	Eval(bFiltraBrw)
 	dbSelectArea(cAlias)
 	dbGoTop()
@@ -53,7 +56,7 @@ User Function MBrwSZ1()
 //+------------------------------------------------
 //| Deleta o filtro utilizado na função FilBrowse
 //+------------------------------------------------
-	EndFilBrw(cAlias,aIndexSZ1)
+	EndFilBrw(cAlias,aIndexA3)
 Return Nil
 
 /*/
@@ -70,16 +73,16 @@ Return Nil
 	±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 	ßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßß
 /*/
-/*/{Protheus.doc} BInclui
+/*/{Protheus.doc} BIncS3
 /*/
-User Function BInclui(cAlias,nReg,nOpc)
+User Function BIncS3(cAlias,nReg,nOpc)
 	Local nOpcao := 0
-	
-	nOpcao := AxInclui(cAlias,nReg,nOpc)
+
+	//nOpcao := AxInclui(cAlias,nReg,nOpc) removido para cancelar nova entrada
 	If nOpcao == 1
 		MsgInfo("Inclusão efetuada com sucesso!")
 	Else
-		MsgInfo("Inclusão cancelada!")
+		MsgInfo("Não é permitido a inclusão de um novo vendedor!")
 	Endif
 Return Nil
 
@@ -98,9 +101,9 @@ Return Nil
 	±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 	ßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßß
 /*/
-/*/{Protheus.doc} BAltera
+/*/{Protheus.doc} BAlterS3
 /*/
-User Function BAltera(cAlias,nReg,nOpc)
+User Function BAlterS3(cAlias,nReg,nOpc)
 	Local nOpcao := 0
 	nOpcao := AxAltera(cAlias,nReg,nOpc)
 	If nOpcao == 1
@@ -124,9 +127,9 @@ Return Nil
 	±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 	ßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßß
 /*/
-/*/{Protheus.doc} BDeleta
+/*/{Protheus.doc} BDelS3
 /*/
-User Function BDeleta(cAlias,nReg,nOpc)
+User Function BDelS3(cAlias,nReg,nOpc)
 	Local nOpcao := 0
 	nOpcao := AxDeleta(cAlias,nReg,nOpc)
 	If nOpcao == 1
@@ -150,12 +153,13 @@ Return Nil
 	±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 	ßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßß
 /*/
-/*/{Protheus.doc} BLegenda
+/*/{Protheus.doc} BLegS3
 /*/
-User Function BLegenda()
+User Function BLegS3()
 	Local ALegenda := {}
 
 	AADD(aLegenda,{"BR_VERDE" ,"Multiplica" })
 	AADD(aLegenda,{"BR_AMARELO" ,"Divide" })
 	BrwLegenda(cCadastro, "Legenda", aLegenda)
 Return Nil
+
