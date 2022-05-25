@@ -44,7 +44,7 @@ User Function MBrwSZ1()
 //| Cria o filtro na MBrowse utilizando a função FilBrowse
 //+------------------------------------------------------------
 
-	cFiltra	:= ' SZ1->Z1_FATOR > 10 '
+	cFiltra	:= ' SZ1->Z1_FATOR > 0 '
 	bFiltraBrw 	:={ || FilBrowse(cAlias,@aIndexSZ1,@cFiltra) }
 	Eval(bFiltraBrw)
 	dbSelectArea(cAlias)
@@ -74,20 +74,20 @@ Return Nil
 /*/
 User Function BInclui(cAlias,nReg,nOpc)
 	Local nOpcao := 0
-	BeginTran()
+	//BeginTran()
 	nOpcao := AxInclui(cAlias,nReg,nOpc)
 	If nOpcao == 1
 		MsgInfo("Inclusão efetuada com sucesso!")
-		DbSelectArea("SB1")
+		/* DbSelectArea("SB1")
 		DbSetOrder(1)
 		dbSeek(xFilial()+SZ1->Z1_PRODUTO)
 		RecLock("SB1", .F.)
 			B1_DTALTER := Date()			
-		MsUnlock()
+		MsUnlock() */
 	Else
 		MsgInfo("Inclusão cancelada!")
 	Endif
-	EndTran()
+	//EndTran()
 Return Nil
 
 
