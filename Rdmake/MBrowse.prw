@@ -74,7 +74,7 @@ Return Nil
 /*/
 User Function BInclui(cAlias,nReg,nOpc)
 	Local nOpcao := 0
-
+	BeginTran()
 	nOpcao := AxInclui(cAlias,nReg,nOpc)
 	If nOpcao == 1
 		MsgInfo("Inclusão efetuada com sucesso!")
@@ -87,7 +87,7 @@ User Function BInclui(cAlias,nReg,nOpc)
 	Else
 		MsgInfo("Inclusão cancelada!")
 	Endif
-
+	EndTran()
 Return Nil
 
 
