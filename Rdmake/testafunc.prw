@@ -14,7 +14,7 @@ User Function TESTAFUNC()
 	Local aArea := GetArea()
 	Local _aGrpUSR := {}
 	Local _lDESENV := .F.
-    lOCAL _n := 0
+    Local _n := 0
 
 	//Variáveis da tela
 	Private oDlgForm

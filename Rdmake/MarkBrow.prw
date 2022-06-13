@@ -25,23 +25,25 @@ USER FUNCTION MkBrwSz1()
 	Private cCadastro := "Cadastro de UM por Clientes"
 	Private aRecSel := {}
 
-    //BOTOES
+	//BOTOES
 	AADD(aRotina,{"Visualizar Lote","U_VisLote",0,5})
 
-    //CAMPOS DO BROWSE
+	//CAMPOS DO BROWSE
 	AADD(aCpos, "Z1_OK" )
 	AADD(aCpos, "Z1_FILIAL" )
 	AADD(aCpos, "Z1_CLIENT" )
 	AADD(aCpos, "Z1_LOJA" )
 	AADD(aCpos, "Z1_PRODUT" )
 	AADD(aCpos, "Z1_FATOR" )
-	
-	dbSelectArea("SX3")
-	dbSetOrder(2)
+
+	OpenSxs(,,,,,"SX3TRB","SX3",,)
+	dbSelectArea("SX3TRB")
+	SX3TRB->(dbSetOrder(2))
 	For nI := 1 To Len(aCpos)
 		IF dbSeek(aCpos[nI])
 			//Uso não permitido do Dicionário.
-			//AADD(aCampos,{X3_CAMPO,"",IIF(nI==1,"",Trim(X3_TITULO)),Trim(X3_PICTURE)})
+			// AADD(aCampos,{X3_CAMPO,"",IIF(nI==1,"",Trim(X3_TITULO)),Trim(X3_PICTURE)}) OpenSxs(,,,,,"X3_CAMPO","SX3",,.F.)
+			AADD(aCampos,{SX3TRB->&('X3_CAMPO'),"",IIF(nI==1,"",Trim(SX3TRB->&('X3_TITULO'))),Trim(SX3TRB->&('X3_PICTURE'))})
 		ENDIF
 	Next
 
