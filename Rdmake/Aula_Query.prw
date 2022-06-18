@@ -34,7 +34,7 @@ User Function  AQuery()
 	cSql +=" FROM " + RetSQLName("SA2")+" "+ENTER
 	cSql +=" Where A2_FILIAL = '" + xFilial("SA2") + "'"+ENTER
 	cSql +=" AND D_E_L_E_T_ = ' ' "+ENTER
-	cSql +=" AND A2_ULTCOM <= '"+Dtos(Date())+'"
+	cSql +=" AND A2_ULTCOM <= '"+Dtos(Date())+"'"
 
 	//GERA ARQUIVO NA PASTA SYSTEM
 	MemoWrite("AULA_QUERY.SQL",cSql)

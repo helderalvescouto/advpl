@@ -56,8 +56,12 @@
 		{
 			"args": [],
 			"label": "SIGAFAT"
+		},
+		{
+			"args": [],
+			"label": "U_AQuery"
 		}
 	],
-	"lastProgramExecuted": "SIGAFAT",
+	"lastProgramExecuted": "U_AQuery",
 	"lastProgramArgumens": []
 }
