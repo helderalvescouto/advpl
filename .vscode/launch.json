@@ -60,8 +60,12 @@
 		{
 			"args": [],
 			"label": "U_AQuery"
+		},
+		{
+			"args": [],
+			"label": "U_IVisual"
 		}
 	],
-	"lastProgramExecuted": "U_AQuery",
+	"lastProgramExecuted": "U_IVisual",
 	"lastProgramArgumens": []
 }

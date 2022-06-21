@@ -4,8 +4,8 @@
 
 User Function StoreProc()
 	Local aRet := {}
-    Local i := 0
-    
+	Local i := 0
+
 	RpcSetType(3)
 	PREPARE ENVIRONMENT EMPRESA "99" FILIAL "01" MODULO "FAT"
 //VERIFICA SE A PROCEDURE EXISTE
@@ -19,7 +19,7 @@ User Function StoreProc()
 			For i:= 1 to Len(aRet)
 				//Mostra os valores de retorno
 				aRet[i]
-			Next
+			Next 
 
 		Else
 			MsgStop("Mensagem: "+TCSQLError(),"Erro executando Stored Procedure")
@@ -28,5 +28,5 @@ User Function StoreProc()
 	else
 		MsgAlert("Store Procedure VERIFICA_CLIENTE não econtrada","Operação inválida")
 	EndIf
-RESET ENVIRONMENT
+	RESET ENVIRONMENT
 Return

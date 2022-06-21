@@ -36,17 +36,17 @@ User Function Manipulacao()
 	dbSelectArea("SA1")
 	dbSetOrder(1)
 	If dbSeek(xFilial()+cCliente+cLoja)
-		MsgInfo("Nome: "+SA1->A1_NOME)
+		MsgInfo("Nome: "+SA1->A1_NOME,"Mensagem")
 	else
-		MsgInfo("CLIENTE NAO ENCONTRADO")
+		MsgInfo("CLIENTE NAO ENCONTRADO","Mensagem")
 	EndIf
 
 	dbSelectArea("SZ1")
 	dbSetOrder(1)
 	If dbSeek(xFilial()+cProdut)
-		MsgInfo("Cliente: "+AllTrim(SA1->A1_NOME)+"- Produto: "+SZ1->B1_DESC)
+		MsgInfo("Cliente: "+AllTrim(SA1->A1_NOME)+"- Produto: "+SZ1->B1_DESC,"Mensagem")
 	else
-		MsgInfo("PRODUTO NAO ENCONTRADO")
+		MsgInfo("PRODUTO NAO ENCONTRADO","Mensagem")
 	EndIf
 
 	RESET ENVIRONMENT

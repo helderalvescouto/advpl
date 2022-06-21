@@ -37,7 +37,7 @@ User Function IVisual()
 	ENDIF
 
 	//MsgInfo(cText, cTitle)
-	MsgInfo("O CNPJ digitado foi: "+cCGC)
+	MsgInfo("O CNPJ digitado foi: "+cCGC, "Informação")
 
 Return
 
