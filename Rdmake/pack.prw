@@ -18,13 +18,13 @@
 
 @ 96,42 TO 323,505 DIALOG oDlg5 TITLE "Rotina de Pack"
 @ 8,10 TO 84,222
-@ 91,168 BMPBUTTON TYPE 1 ACTION Execute(OkProc)
+@ 91,168 BMPBUTTON TYPE 1 ACTION Execute(U_OkProc())
 @ 91,196 BMPBUTTON TYPE 2 ACTION Close(oDlg5)
 @ 23,14 SAY "Este programa ira fazer um pack em todos arquivos abertos pelo Advanced."
 ACTIVATE DIALOG oDlg5
 Return nil
 
-Function OkProc
+User Function OkProc
 	Close(oDlg5)
 	Processa( {|| Execute(RunProc()) } )
 Return
@@ -40,7 +40,7 @@ Return
 ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
 ßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßß
 */  
-Function RunProc
+Static Function RunProc
 
 	dbSelectArea("SX2")
 	nRecnoSX2 := SX2->(Recno())

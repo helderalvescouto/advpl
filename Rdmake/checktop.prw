@@ -42,9 +42,10 @@ Return
 */
 User Function checkproc()
 	Local cBanco, CQUERY
-	Local cServer := Space(30)
-	Local cDataBase := Space(30)
-	Local cEmpAnt,cArqSX2
+	//Local cServer := Space(30)
+	//Local cDataBase := Space(30)
+	Local cEmpAnt
+	//Local cArqSX2
 	local aCamposCHK := {}
 	Private aCamposSX3 := {},cUsertable:=""
 	Private cmsgstopa := "N"
@@ -142,7 +143,8 @@ Return(.T.)
 ßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßß
 */
 User Function CheckTabela(cArquivo,cBanco)
-	Local aStru,ni,cQuery, cAlias, npos, npos1,npos2,npos3, lErro, lCria, ncount
+	//Local aStru
+	Local ni,cQuery, cAlias, npos, npos1,npos2,npos3, lErro, lCria, ncount
 
 	cArquivo := Upper(Alltrim(cArquivo))
 	IF "."$cArquivo
