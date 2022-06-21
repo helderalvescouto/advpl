@@ -64,8 +64,12 @@
 		{
 			"args": [],
 			"label": "U_IVisual"
+		},
+		{
+			"args": [],
+			"label": "U_StoreProc"
 		}
 	],
-	"lastProgramExecuted": "U_IVisual",
+	"lastProgramExecuted": "U_StoreProc",
 	"lastProgramArgumens": []
 }

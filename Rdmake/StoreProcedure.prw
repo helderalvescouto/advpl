@@ -18,7 +18,7 @@ User Function StoreProc()
 
 			For i:= 1 to Len(aRet)
 				//Mostra os valores de retorno
-				aRet[i]
+				MsgInfo("INFO: "+aRet[i],"Mensagem")
 			Next 
 
 		Else
